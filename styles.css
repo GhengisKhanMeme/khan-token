@@ -1,0 +1,281 @@
+/*
+  Main styles for the $KHAN website.
+  Uses a dark theme with contrasting accent colours inspired by vintage steppe art.
+*/
+
+:root {
+  --bg: #0e0e0f;
+  --card: #161618;
+  --text: #f0efe9;
+  --muted: #b3b3aa;
+  --brand: #c8452c; /* primary brand colour reminiscent of steppe sunsets */
+  --brand-light: #f2c695; /* secondary accent colour */
+}
+
+/* Reset and basics */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+a {
+  color: var(--brand-light);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+a:hover {
+  color: var(--brand);
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(14, 14, 15, 0.8);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid #222;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+.brand {
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+}
+.site-header nav a {
+  margin-left: 16px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+}
+.btn-small {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+}
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #0e0e0f;
+}
+.btn-primary:hover {
+  background: #a73727;
+}
+.btn-ghost {
+  border-color: #333;
+  color: var(--text);
+}
+.btn-ghost:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+/* Hero section */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero-img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+  object-position: center;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+.hero h1 {
+  font-size: 2.2rem;
+  margin: 0 0 0.4rem;
+  font-weight: 800;
+}
+.hero p {
+  max-width: 560px;
+  color: var(--muted);
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Sections */
+.section {
+  padding: 64px 0;
+}
+.section.alt {
+  background: linear-gradient(180deg, rgba(22, 22, 24, 1) 0%, rgba(14, 14, 15, 1) 100%);
+}
+
+/* Grid layout */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+@media (min-width: 900px) {
+  .grid2 {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+/* Cards */
+.card {
+  background: var(--card);
+  padding: 20px;
+  border: 1px solid #222;
+  border-radius: 14px;
+}
+.card-img {
+  border-radius: 14px;
+  border: 1px solid #222;
+}
+
+/* Checklists and stats */
+.checklist {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0;
+}
+.checklist li {
+  margin: 8px 0;
+  padding-left: 26px;
+  position: relative;
+}
+.checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--brand-light);
+  font-weight: 800;
+}
+.steps {
+  counter-reset: step;
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0;
+}
+.steps li {
+  counter-increment: step;
+  margin: 12px 0;
+  padding-left: 36px;
+  position: relative;
+}
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #0e0e0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+.note {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.stats {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.stats li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border: 1px solid #222;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  background: var(--card);
+}
+.stats span {
+  color: var(--muted);
+}
+
+/* Roadmap */
+.roadmap {
+  display: grid;
+  gap: 16px;
+}
+.rm-item {
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 16px;
+  background: var(--card);
+}
+.rm-item h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  color: var(--brand);
+}
+.rm-item p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Socials Section */
+.center {
+  text-align: center;
+}
+.socials {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid #222;
+  padding: 22px 0;
+  color: var(--muted);
+}
+.small {
+  font-size: 0.9rem;
+}
